@@ -1,0 +1,74 @@
+<div class="container-fluid pt-4" [formGroup]="form">
+  <div class="row ">
+    <div class="col-12">
+      <span class="p-float-label">
+        <input formControlName="nome" placeholder="Ex: Gabriel Lopes" id="float-input" type="text" pInputText>
+        <label for="float-input">Nome</label>
+      </span>
+    </div>
+
+    <div class="col-12">
+      <span class="p-float-label">
+        <p-calendar formControlName="dataNasc" placeholder="Ex: 03/12/1995" id="calendar" styleClass="p-calendar"></p-calendar>
+        <label for="calendar">Data de nascimento</label>
+      </span>
+    </div>
+
+    <div class="col-12">
+      <span class="p-float-label">
+        <input formControlName="email" placeholder="Ex: Gabriel Lopes" [ngClass]="{'ng-invalid ng-dirty': error.type == 'email'}" id="float-input" type="text" pInputText>
+        <label for="float-input">Email</label>
+        <small id="username2-help" class="p-error block">{{error.message}}</small>
+      </span>
+    </div>
+
+    <div class="col-12">
+      <span class="p-float-label">
+        <p-password formControlName="senha" placeholder="Inclua letras e números" styleClass="p-password" id="float-input">
+          <ng-template pTemplate="footer">
+            <h6>(No mínimo)</h6>
+            <p-divider></p-divider>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+              <li>Uma letra maiúscula</li>
+              <li>Uma letra minúscula</li>
+              <li>Um número</li>
+              <li>Mínimo 8 caracteres</li>
+          </ul>
+          </ng-template>
+        </p-password>
+        <label for="float-input">Senha</label>
+      </span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <p-card>
+        <div class="container-fluid p4 avatar-container">
+          <div class="row">
+            <div class="col-auto">
+              <h6 class="text-secondary">Escolha seu avatar</h6>
+            </div>
+            <div class="col-auto me-3">
+              <span title="Trocar avatares" (click)="generateRandomHash()" class="pi pi-refresh"></span>
+            </div>
+          </div>
+
+          <div id="avatars" class="avatares">
+            <img
+              *ngFor="let url of avatars; index as i"
+              [ngClass]="{'selected': indexAvatarSelected == i}"
+              [src]="url" alt=""
+              (click)="setAvatar(i, url)">
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <button (click)="submit()" pButton>Cadastrar</button>
+    </div>
+  </div>
+</div>

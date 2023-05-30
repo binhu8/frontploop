@@ -1,0 +1,41 @@
+.container-fluid{
+  width: 100%;
+  height: calc(100vh - 61px);
+  padding: 0;
+  max-width: 1360px;
+}
+
+main{
+  width: 100%;
+  height: calc(100%);
+  display: flex;
+
+  .left{
+    width: 70%;
+    height: 100%;
+    padding: 1rem;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
+
+    app-user-details, app-user-posts{
+      width: 100%;
+    }
+
+    app-user-posts{
+      height: 100%;
+      background: aliceblue;
+    }
+  }
+  .right{
+    width: 30%;
+    height: 100%;
+    padding: 1rem;
+
+    app-user-most-liked-posts{
+      width: 100%;;
+    }
+  }
+}

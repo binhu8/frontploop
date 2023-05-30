@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <p-card styleClass="p-card-my-comment" [formGroup]="form">
+    <div [ngClass]="{'dark': isDarkMode}"  class="content-my-comment">
+      <div class="my-comment w-100">
+        <p-avatar  [image]="userData.avatar"></p-avatar>
+        <textarea  formControlName="conteudo" placeholder="Escreva um comentário" class="text w-100" pInputTextarea rows="1" [autoResize]="true"></textarea>
+        <button (click)="comment(publication)" pButton pRipple type="button" icon="pi pi-telegram" class=" p-button-sm p-button-rounded "></button>
+      </div>
+    </div>
+  </p-card>
+  <p-card  styleClass="p-card-home-feed-comments" class="w-100 " *ngFor="let comentario of dataSource">
+    <div class="content">
+      <div class="row">
+        <p-chip routerLink="/profile/{{comentario.autor._id}}" [image]="comentario.autor.avatar" [label]="comentario.autor.nome"></p-chip>
+      </div>
+      <div class="row mt-1 mb-2">
+        <div class="col-12 d-flex align-items-end">
+          <div class="item"></div>
+          <textarea [value]="comentario.comment.conteudo" [readonly]="true" [autoResize]="true" class=" text w-100" pInputTextarea rows="1"></textarea>
+        </div>
+      </div>
+    </div>
+  </p-card>
+</div>

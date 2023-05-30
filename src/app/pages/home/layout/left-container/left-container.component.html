@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <p-card class="w-100" styleClass="p-card-home-left">
+    <div class="content">
+      <div class="header">
+        <div class="cover">
+          <img [src]="userData.avatar" alt="">
+        </div>
+
+        <div class="bio pe-2 ps-2">
+          <h5 class="p-0 m-0">{{userData.nome}}</h5>
+          <p class="text-secondary">{{userData.email}}</p>
+
+          <p-divider class="w-100"></p-divider>
+
+          <div class="seguindo-seguidores p3">
+            <div class="seguindo">
+              <h4 >{{userData.seguindo.length}}</h4>
+              <h6 class="text-secondary">Seguindo</h6>
+            </div>
+            <p-divider layout="vertical"></p-divider>
+            <div class="seguidores">
+              <h4 >{{userData.seguidores.length}}</h4>
+              <h6 class="text-secondary">Seguidores</h6>
+            </div>
+          </div>
+
+          <p-divider class="w-100 m-0"></p-divider>
+
+          <div class="my-profile" >
+            <a routerLink="/profile/{{userData._id}}" href="#">Meu Perfil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-card>
+</div>

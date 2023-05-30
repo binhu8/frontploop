@@ -1,0 +1,58 @@
+.content{
+  width: 100%;
+  display: flex;
+  padding: 0.5rem;
+}
+
+.p-inputtext-sm{
+  height: 35px;
+  width: 100%;
+}
+
+.col-auto, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12{
+  display: flex;
+  align-items: center;
+}
+
+.icon-nav{
+  cursor: pointer;
+  transition: 0.2s ;
+  i{
+    font-size: 1.5rem !important;
+  }
+
+  &:hover{
+    i{
+      transition: 0.3s;
+      font-weight: 400;
+      color: #633bc0 !important;
+    }
+
+  }
+}
+
+@media screen and (min-height: 650px){
+  .container-fluid{
+    min-height: 8%;
+  }
+}
+
+
+
+.home{
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  i{
+    margin-right: 10px;
+  }
+  span{
+    font-weight: 500
+  };
+}
+
+.logo{
+  width: 30px;
+}

@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('/node_modules/primeicons/primeicons.css');
+@import url(./styles.primeng.scss);
+
+body{
+  background: transparent;
+}
+input{
+  width: 100%;
+}
+// button{
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.p-chip{
+  padding: 0.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+
+  img{
+    margin-left: 0;
+    cursor: pointer;
+  }
+
+
+  .p-chip-text{
+    margin-right: 10px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+}
+
+.text{
+  padding: 0;
+  outline: none;
+
+  &:focus{
+    outline: none !important;
+    box-shadow: none !important;
+    border: none;
+  }
+}
+
+.p-divider-horizontal{
+  height: 10px !important;
+  margin: 3px !important;
+}
+
+.p-card-header-home{
+  background-color: #633bc0;
+  color: #fff;
+}
+
+.p-card-navbar{
+  border-radius: 0!important;
+}
+
+.dark{
+  background: #040D19;
+}
+
+.light{
+  background: aliceblue;
+}
+
+

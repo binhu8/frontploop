@@ -1,0 +1,44 @@
+<div class="container-fluid" *ngIf="loaded">
+  <p-card *ngFor="let publication of publications " styleClass="p-card-home-feed">
+    <div class="content">
+      <div class="row justify-content-between">
+        <div class="col-auto d-flex align-items-center">
+          <p-avatar size="large" text="teste" [image]="publication.autor.avatar" ></p-avatar>
+          <div class="name-time ms-2">
+            <h6 routerLink="/profile/{{publication.autor._id}}" class="link p-0 m-0">{{publication.autor.nome}}</h6>
+            <p class="p-0 m-0 text-secondary">{{getHourLater(publication.pub.dataCriacao)}}</p>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <i (click)="menu.toggle($event)" class="pi pi-ellipsis-v text-secondary"></i>
+          <p-menu #menu [popup]="true" [model]="items"></p-menu>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 padding-left">
+          <textarea  [readonly]="true" [value]="publication.pub.conteudo" rows="1" class="text w-100" pInputTextarea [autoResize]="true"></textarea>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="padding-left col-auto d-flex align-items-center">
+          <div pRipple [title]="publication.pub.curtidas.includes(userData._id) ? 'descurtir' : 'curtir'" (click)="setLike(publication.pub)" class="like-container me-2">
+            <i [ngClass]="{'active': publication.pub.curtidas.includes(userData._id)}" class="pi pi-thumbs-up-fill"></i>
+          </div>
+          <span class="likes">{{publication.pub.curtidas.length}} <span class="link">curtidas</span></span>
+        </div>
+
+        <div class="col-auto d-flex align-items-center">
+          <div class="like-container me-2">
+            <i class="pi pi-comments"></i>
+          </div>
+          <span class="comments">{{publication.pub.comentarios.length}} <span (click)="showComments = !showComments" class="link">comentários</span></span>
+
+
+        </div>
+      </div>
+    </div>
+
+    <app-comments [userData]="userData" [publication]="publication.pub._id" [comments]="publication.pub.comentarios" *ngIf="showComments"></app-comments>
+  </p-card>
+</div>

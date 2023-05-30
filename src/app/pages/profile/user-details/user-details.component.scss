@@ -1,0 +1,45 @@
+.content{
+  width: 100%;
+
+  .cover{
+    width: 100%;
+    min-height: 150px;
+    max-height: 400px;
+    position: relative;
+    background: antiquewhite;
+
+    .img{
+      width: 120px;
+      height: 120px;
+      position: absolute;
+      bottom: -60px;
+      left: 2rem;
+      border-radius: 50%;
+      border: 6px solid #FFF;
+      overflow: hidden;
+
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .details{
+    padding: 1rem 2rem 2rem 2rem;
+    h2{
+      margin-bottom: 1rem;
+    }
+    span{
+      padding-bottom: 1rem;
+    }
+
+    .seguidores{
+      padding-top: 1rem;
+    }
+  }
+}
+
+.p-button-sm{
+  padding: 0.5rem;
+}

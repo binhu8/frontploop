@@ -1,0 +1,23 @@
+<header>
+  <app-header></app-header>
+</header>
+<div class="container-fluid" *ngIf="load">
+
+  <main>
+    <section class="left">
+      <app-user-details
+        (unfollows)="getUserProfileInfos($event._id)"
+        (novoSeguidor)="getUserProfileInfos($event._id)"
+        [id]="id"
+        [localUserData]="localUserData"
+        [seguindo]="seguindo"
+        [seguidores]="seguidores"
+        [userData]="userData">
+      </app-user-details>
+      <app-user-posts></app-user-posts>
+    </section>
+    <section class="right">
+      <app-right-container></app-right-container>
+    </section>
+  </main>
+</div>

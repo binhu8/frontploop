@@ -1,0 +1,66 @@
+.container-fluid{
+  max-width: 400px ;
+  height: 70vh;
+}
+
+.col-12{
+  margin-bottom: 2rem;
+}
+
+.avatar-container{
+  max-height: 160px;
+  box-shadow: none;
+  padding: 1rem;
+}
+
+.avatares{
+  width: 100%;
+  height: calc(100% - 27.19px);
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+
+  img{
+    width: 70px;
+    height: 70px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s ease ;
+
+    &.selected{
+      width: 75px;
+      height: 75px;
+      border: 2px dashed #633bc0;
+      border-radius: 50%;
+      padding: 5px;
+      transition: width 0.3s ease;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #7957caf1;
+    height: 2px;
+    border-radius: 5px;
+  }
+}
+
+.pi-refresh{
+  cursor: pointer;
+}

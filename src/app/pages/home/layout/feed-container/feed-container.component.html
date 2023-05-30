@@ -1,0 +1,72 @@
+<div class="container-fluid" [formGroup]="form" *ngIf="loaded">
+  <p-card class="w-100" styleClass="p-card-home-feed">
+    <div class="content">
+      <div class="row mb-2">
+        <div class="col-12 d-flex ">
+          <p-avatar class="me-2" size="large" [image]="userData.avatar"></p-avatar>
+          <textarea formControlName="conteudo" maxlength="500" placeholder="Qual sua ideia hoje ?" rows="1" class="w-100" pInputTextarea [autoResize]="true"></textarea>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-3">
+          <button (click)="publish()" class="p-button-sm w-100" pButton label="publicar" icon="pi pi-telegram"></button>
+        </div>
+      </div>
+    </div>
+  </p-card>
+
+  <div class="feed-container">
+    <p-card *ngFor="let publication of publications; index as i " styleClass="p-card-home-feed">
+      <div class="content">
+        <div class="row justify-content-between">
+          <div class="col-auto d-flex align-items-center">
+            <p-avatar size="large" text="teste" [image]="publication.autor.avatar" ></p-avatar>
+            <div class="name-time ms-2">
+              <h6 routerLink="/profile/{{publication.autor._id}}" class="link p-0 m-0">{{publication.autor.nome}}</h6>
+              <p class="p-0 m-0 text-secondary">{{getHourLater(publication.pub.dataCriacao)}}</p>
+            </div>
+          </div>
+
+          <div class="col-auto">
+            <i (click)="menu.toggle($event)" class="pi pi-ellipsis-v text-secondary"></i>
+            <p-menu
+            #menu
+            [popup]="true"
+            [model]="items[i] ">
+          </p-menu>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 padding-left">
+            <textarea  #textarea  [readonly]="true" [value]="publication.pub.conteudo" rows="1" class="text w-100" pInputTextarea [autoResize]="true"></textarea>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-8">
+            <div class="row m-0">
+              <div class="padding-left col-auto d-flex align-items-center">
+                <div pRipple [title]="publication.pub.curtidas.includes(userData._id) ? 'descurtir' : 'curtir'" (click)="setLike(publication.pub)" class="like-container me-2">
+                  <i [ngClass]="{'active': publication.pub.curtidas.includes(userData._id)}" class="pi pi-thumbs-up-fill"></i>
+                </div>
+                <span class="likes">{{publication.pub.curtidas.length}} <span class="link">curtidas</span></span>
+              </div>
+
+              <div class="col-auto d-flex align-items-center">
+                <div class="like-container me-2">
+                  <i class="pi pi-comments"></i>
+                </div>
+                <span class="comments">{{publication.pub.comentarios.length}} <span (click)="showComments = !showComments" class="link">comentários</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-4  " *ngIf="editMode">
+            <button (click)="setUpdate()" pButton label="Atualizar" class=" w-100 p-button-sm"></button>
+          </div>
+        </div>
+      </div>
+
+      <app-comments [userData]="userData" [publication]="publication.pub._id" [comments]="publication.pub.comentarios" *ngIf="showComments"></app-comments>
+    </p-card>
+  </div>
+</div>
+<p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle"></p-confirmDialog>

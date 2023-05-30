@@ -1,0 +1,36 @@
+<p-card styleClass="p-card-navbar">
+  <div class="content">
+    <div class="row w-100 align-items-center m-0">
+      <div class="col-auto">
+        <img routerLink="/" src="assets/icons/mini-logo-ploop.png" width="30px" class="logo">
+      </div>
+      <div class="col-6">
+        <div class="p-input-icon-left w-100">
+          <i class="pi pi-search"></i>
+          <input (blur)="search()" [(ngModel)]="valueSearch" placeholder="Encontre amigos" class="p-inputtext-sm" type="text" pInputText>
+        </div>
+      </div>
+    </div>
+    <div class="row m-0 w-100  align-items-center justify-content-end">
+      <div class="col-auto icon-nav me-0">
+        <i class="pi pi-bell fs-5 text-secondary"></i>
+      </div>
+
+      <div class="col-auto m-0">
+        <p-divider styleClass="p-divider-header" layout="vertical"></p-divider>
+      </div>
+
+      <div class="col-auto">
+        <p-chip
+          class="w-100"
+          pRipple
+          (click)="menu.toggle($event)"
+          [label]="userData.nome"
+          [image]="userData.avatar" >
+        </p-chip>
+      </div>
+    </div>
+
+    <p-menu #menu [popup]="true" [model]="items"></p-menu>
+  </div>
+</p-card>

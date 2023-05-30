@@ -1,0 +1,58 @@
+<p-card styleClass="p-card-details">
+  <div class="content">
+    <div class="cover">
+      <div class="img">
+        <img [src]="userData.avatar" alt="">
+      </div>
+    </div>
+
+    <div class="row justify-content-end m-0 mt-2 mb-3">
+      <div class="col-auto">
+        <i class="pi pi-ellipsis-v"></i>
+      </div>
+    </div>
+
+    <div class="details">
+      <h2 class="m-0">{{userData.nome}}</h2>
+      <span class="text-secondary">{{userData.email}}</span>
+
+      <div class="seguidores">
+        <h6 class="text-secondary">{{userData.seguidores.length}} seguidores</h6>
+        <p-avatarGroup>
+          <div *ngFor="let seguidor of seguidores; index as i">
+            <p-avatar
+            (click)="navigate(seguidor._id)"
+            [title]="seguidor.nome" *ngIf="i < 4"
+            size="large" shape="circle"
+            [image]="seguidor.avatar">
+          </p-avatar>
+            <p-avatar *ngIf="i == 4" size="large" shape="circle" label="{{userData.seguidores.length - 4}}"></p-avatar>
+          </div>
+        </p-avatarGroup>
+      </div>
+
+      <div class="row m-0 justify-content-end" *ngIf="localUserData._id != id" >
+        <div class="col-auto">
+          <button
+            (click)="follow()"
+            *ngIf="!seguindo"
+            pButton
+            label="Seguir"
+            class="w-100 p-button-sm p-button-outlined "
+            icon="pi pi-plus">
+          </button>
+        </div>
+        <div class="col-auto">
+          <button
+            (click)="unfollow()"
+            *ngIf="seguindo"
+            pButton
+            label="Seguindo"
+            class="w-100 p-button-sm p-button-secondary "
+            icon="pi pi-check">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-card>

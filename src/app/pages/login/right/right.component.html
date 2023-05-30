@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="container-login">
+    <div class="row justify-content-end">
+      <div class="col-auto d-flex align-items-center">
+        <span class="pi pi-sun me-2 fs-4"></span>
+        <p-inputSwitch (onChange)="toggleDarkMode($event.checked)" styleClass="p-inputSwitch"></p-inputSwitch>
+        <span class="pi pi-moon ms-2 fs-4"></span>
+      </div>
+    </div>
+    <div class="title-subtitle">
+      <h1>Bem-vindo</h1>
+      <span>Entre na sua conta agora</span>
+    </div>
+
+
+    <div class="row mt-5 gap-4" [formGroup]="form">
+      <div class="col-12 mb-2">
+        <span class="p-float-label">
+          <input [ngClass]="{'p-filled': form.value.email != undefined}" formControlName="email" placeholder="Insira seu email" (click)="type = 'text'" class="w-100" [type]='type' pInputText id="float-input">
+          <label for="float-input">E-mail</label>
+        </span>
+      </div>
+      <div class="col-12">
+        <span class="p-float-label">
+          <p-password formControlName="password" styleClass="password"  autocomplete="new-phone" [ariaAutoComplete]="false" class="w-100 " [feedback]="false" [toggleMask]="true"></p-password>
+          <label for="float-input">Senha</label>
+          <small *ngIf="error.error" id="username2-help" class="p-error block">{{error.message}}</small>
+        </span>
+      </div>
+      <div class="col-12">
+        <button (click)="login()" class="w-100 d-flex justify-content-center" pButton >Entrar</button>
+      </div>
+
+      <div class="col-12 text-center">
+        <span class="forget">Esqueci meu <span><a href="#">login ou senha</a></span></span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-signup">
+    <span>Não tem uma conta? <span><a (click)="toggleModal()">Inscreva-se</a></span></span>
+  </div>
+</div>
+
+
+<p-dialog
+  [draggable]="false"
+  [closeOnEscape]="true"
+  [modal]="true"
+  [resizable]="false"
+  styleClass="teste"
+  header="Crie sua conta"
+  [(visible)]="isOpen">
+
+  <app-signup (created)="created()"></app-signup>
+</p-dialog>

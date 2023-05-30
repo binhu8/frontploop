@@ -1,0 +1,81 @@
+.container-fluid{
+  width: 100%;
+  height:100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+
+  .header{
+    width: 100%;
+
+    .cover{
+      width: 100%;
+      height: 90px;
+      background: #633bc0;
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      img{
+        position: absolute;
+        bottom: -50px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+    }
+
+    .bio{
+      padding-top: 65px;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .seguindo-seguidores{
+      width: 100%;
+      display: flex;
+      .seguindo, .seguidores{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+
+}
+
+p-divider{
+  .p-element-w{
+    height: 10px !important;
+  }
+}
+
+.my-profile{
+  padding: 1rem;
+  a{
+    text-decoration: none;
+    font-weight: 500;
+    color: #a38adf;
+    transition: 0.3s;
+
+    &:hover{
+      color: #633bc0;
+      transition: 0.3s;
+      text-decoration: underline;
+    }
+  }
+}
+
+
